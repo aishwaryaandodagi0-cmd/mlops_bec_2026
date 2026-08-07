@@ -1,4 +1,0 @@
-[core]
-    remote = myremote
-['remote "myremote"']
-    url = s3://mlops-workshop-krysha-data2/dvc-store
