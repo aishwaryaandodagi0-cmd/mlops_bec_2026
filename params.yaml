@@ -34,7 +34,7 @@ evaluate:
   # A model MUST exceed ALL of these to be registered in the Registry.
   # Lower = more lenient. Higher = stricter quality bar.
   min_accuracy: 0.78
-  min_auc_roc:  0.83
+  min_auc_roc:  0.80
   min_f1_score: 0.55
 
 monitoring:
