@@ -62,9 +62,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Pull DVC data from S3
-        run: |
-         dvc pull
+      # - name: Pull DVC data from S3
+      #   run: |
+      #    dvc pull
 
       - name: Run unit tests
         run: pytest tests/ -v --tb=short
@@ -88,8 +88,8 @@ jobs:
         # This step's exit code is what determines whether Job 2 runs.
         # If evaluate.py exits 1 (gate failed), this step fails, and
         # build-and-push below is automatically skipped via `needs`.
-      - name: Push updated artifacts to DVC remote
-        run: dvc push
+      # - name: Push updated artifacts to DVC remote
+      #   run: dvc push
 
   # ════════════════════════════════════════════════════════════════════
   # JOB 2: Build and Push Docker Image
