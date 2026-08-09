@@ -1,4 +1,6 @@
 [core]
     remote = myremote
+    autostage = true
 ['remote "myremote"']
     url = s3://mlops-workshop-kryhsa-data1/dvc-store
+    region = ap-south-2
