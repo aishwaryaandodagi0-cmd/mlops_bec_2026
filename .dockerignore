@@ -1,0 +1,31 @@
+# ══════════════════════════════════════════════════════════════════════
+#  .dockerignore — files Docker should NOT copy into the image
+# ══════════════════════════════════════════════════════════════════════
+
+.venv/                  # Virtual environment — image has its own Python
+venv/
+mlruns/                 # MLflow experiment data — not needed at serve time
+mlartifacts/
+data/                   # Training datasets — not needed at serve time
+models/                 # Local model files — we load from MLflow Registry
+.dvc/                   # DVC cache and config
+.dvc/cache/
+.git/                   # Git history — never include in a Docker image
+.gitignore
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+tests/                  # Test files — not needed in the production image
+monitoring/              # Monitoring runs as a separate concern
+notebooks/
+*.ipynb
+*.ipynb_checkpoints
+*.md
+.env
+.env.*
+.DS_Store
+*.log
+htmlcov/
+.coverage
