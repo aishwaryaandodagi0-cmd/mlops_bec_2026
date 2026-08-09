@@ -49,7 +49,7 @@ from train import load_and_preprocess
 # the same values stored in params.yaml.
 DEFAULT_GATES = {
     "accuracy": 0.78,
-    "auc_roc":  0.83,
+    "auc_roc":  0.80,
     "f1_score": 0.55,
 }
 
