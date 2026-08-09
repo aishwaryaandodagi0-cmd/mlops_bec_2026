@@ -1,0 +1,11 @@
+# ══════════════════════════════════════════════════════════════════════
+#  ui/requirements.txt — Bonus UI container dependencies
+#
+#  Deliberately lean: the UI only makes HTTP calls to the FastAPI service.
+#  It does NOT need pandas, xgboost, mlflow, or any ML library — the model
+#  lives entirely behind the API. This separation is a good example of
+#  microservice architecture: the UI container stays small and simple.
+# ══════════════════════════════════════════════════════════════════════
+
+streamlit==1.37.1
+requests==2.32.2

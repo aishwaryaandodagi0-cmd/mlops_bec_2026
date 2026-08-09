@@ -1,0 +1,45 @@
+# ══════════════════════════════════════════════════════════════════════
+#  docker-compose.yml — Bonus: Run the API and the Demo UI Together
+#
+#  This is OPTIONAL — not required for any graded session checklist.
+#  It's a nice bonus for Session 11 capstone demos: one command starts
+#  both the model API and the Streamlit UI, wired together automatically.
+#
+#  RUN:
+#    docker compose up --build
+#
+#  THEN OPEN:
+#    UI:  http://localhost:8501
+#    API: http://localhost:8000/docs
+#
+#  STOP:
+#    docker compose down
+#
+#  NOTE: MLflow itself is assumed to be running on the HOST machine
+#  (as it is throughout the workshop) — the api container reaches it via
+#  host.docker.internal, same as the standalone Dockerfile in Session 6.
+# ══════════════════════════════════════════════════════════════════════
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://host.docker.internal:5001
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # required on Linux hosts
+
+  ui:
+    build:
+      context: .
+      dockerfile: ui/Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      # Service name `api` resolves automatically on the Docker Compose network
+      - API_BASE_URL=http://api:8000
+    depends_on:
+      - api
